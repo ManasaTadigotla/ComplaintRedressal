@@ -1,0 +1,30 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-body">
+                    <table>
+                        <tr><td >Complaint Number</td><td>{{complaintDetails.complaintId}} </td></tr>
+                        <tr><td>Subject</td><td>{{complaintDetails.subject}} </td></tr>
+                        <tr><td> Description</td><td>{{complaintDetails.description}} </td></tr>
+                        <tr><td>Address</td><td>{{complaintDetails.address}} </td></tr>
+                        <tr><td>Customer Pincode</td><td>{{complaintDetails.pincode }}</td></tr>                        
+                        <tr><td>Assigned To</td>
+                            <td><select  [(ngModel)]="complaintDetails.engineer.userName" >
+                                <option ></option>
+                                <option *ngFor="let engineer of engineerList" value="{{engineer.userName}}" >
+                                    {{engineer.userName}}
+                                </option> 
+                                
+                            </select></td></tr>
+                        <tr>
+                            <td colspan="2"><input type="button" value="Confirm" (click)="assignToEngineer(complaintDetails.complaintId,complaintDetails.engineer.userName)"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>

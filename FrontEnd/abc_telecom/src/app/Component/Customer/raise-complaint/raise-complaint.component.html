@@ -1,0 +1,46 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-9 p-3">
+            <div class="card">
+                <div class="card-header bg-info">
+                    Complaint Form
+                </div>
+                <div class="card-body" >
+                    <div >
+                        <form [formGroup]="complaintForm" (ngSubmit)="saveComplaint(complaintForm)">           
+                                   
+                            Subject:
+                            <input type="text"  formControlName="subject" class="form-control"  />                
+                            <br />
+                            Description:
+                            <input type="text" formControlName="description" class="form-control"  />
+                            <br />                     
+                            Address:
+                            <input type="text" formControlName="address" class="form-control"  />
+                            <br />  
+                            Pincode:
+                            <input type="text" formControlName="pincode" class="form-control"  />
+                            <br />  
+                            Complaint Type:
+                            <select>
+                                <option value="LANDLINE">LANDLINE</option>
+                                <option value="BROADBAND">BROADBAND</option>
+                            </select>
+                            <br />  
+                            <div>                    
+                                <input type="submit"  value="Save"  class="btn btn-info" />
+                            </div>
+                            
+                        </form>
+                       
+                    </div>
+                </div>
+            </div>
+            <div [ngClass]="errorOrSuccess" [innerHTML]="msg">
+                                
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>

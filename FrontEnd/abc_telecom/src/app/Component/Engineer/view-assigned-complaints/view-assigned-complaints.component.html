@@ -1,0 +1,96 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="form-control">
+                            <b >Complaint information</b>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="card-body">
+                    
+                    <table class="table table-success table-striped">
+                        <tr>                         
+                            <th>Complaint Id</th>  
+                            <th>Type</th>  
+                            <th>Pincode</th>  
+                            <th>Subject</th>  
+                            <th>Description</th>  
+                            <th>Status</th>                    
+                            <th>Operations</th>
+                        </tr>
+                    
+                        <tr *ngFor="let complaint of complaintsInfo ;index as i" class="hover-highlight">
+                            <td><input type="text" class="form-control text-center" [(ngModel)]="complaint.complaintId" [disabled]="true">
+                              
+                            </td>
+                            <td><input type="text" class="form-control text-center" [(ngModel)]="complaint.complaintType" [disabled]="true">
+                              
+                              </td>
+                              <td><input type="text" class="form-control text-center" [(ngModel)]="complaint.pincode" [disabled]="true">
+                              
+                              </td>
+                              <td><input type="text" class="form-control text-center" [(ngModel)]="complaint.subject" [disabled]="true">
+                              
+                              </td>
+                                 <td><input type="text" class="form-control text-center" [(ngModel)]="complaint.description" [disabled]="true">
+                              
+                              </td>
+                              <!-- <td><input type="text" class="form-control text-center" [(ngModel)]="complaint.status" [disabled]="enableEditIndex != i">
+                              
+                              </td> -->
+                              <select class="form-control text-center" [(ngModel)]="complaint.status" 
+                                [disabled]="enableEditIndex != i">
+                                <option value="RAISED">
+                                   RAISED
+                                </option>
+                                <option value="RESOLVED">
+                                    RESOLVED
+                                 </option>
+                                 <option value="ESCALATED">
+                                    ESCALATED
+                                 </option>
+                                 <option value="WIP">
+                                    WIP
+                                 </option>
+                                </select>
+                             
+                            <td>
+                                <button *ngIf="enableEdit && enableEditIndex == i" id="saveBtn" class="btn page-primary-action-btn" (click)="saveComplaintStatus(complaint)" type="submit">Save</button>
+                              <button *ngIf="enableEdit && enableEditIndex == i" (click)="cancelEdit()" class="btn page-secondary-action-btn" >Cancel</button>
+                              
+                              <button class="table-row-action edit-action" *ngIf="!enableEdit" (click)="enableEditMethod($event, i,complaint)">edit</button>
+                             
+                          </td>
+                        </tr>
+                          <!--
+                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                        -->
+                    </table>
+                </div>
+                <div class="card-footer">
+                 <!--  <a style="align-content: end;" class="btn page-primary-action-btn" *ngIf="!isAddClicked" (click)="isAddClicked=true" >Add New</a>
+                  
+                  <div *ngIf="isAddClicked">
+                    <div class="input-group">
+                                    <input type="text" class="form-control" #gName="ngModel" minlength="3" required="true" placeholder="add genre name here" [(ngModel)]="newGenreName" >
+                    <span class="errorInfo" *ngIf="gName.invalid">
+                      *
+                  </span>
+                </div>
+                <div class="form-control">
+                  <button class="btn page-primary-action-btn" (click)="addNewGenre()" [disabled]="gName.invalid" >add</button>
+                 </div>
+               
+                </div> -->
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>

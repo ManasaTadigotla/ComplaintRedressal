@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-header primary">
+                    
+                            <b>Complaint information</b>
+                                              
+                    </div>                    
+                
+                <div class="card-body">
+                    <input type="text" [(ngModel)]="status" name="status"  class="form-control" (ngModelChange)="SearchComplaint()" 
+                     placeholder="Serach by status( RAISED or RESOLVED or WIP )here" />
+                    <br />
+                    <table class="table table-success table-striped">
+                        <tr>                 
+                               
+                            <th>Type</th>  
+                            <th>Subject</th>  
+                            <th>Pincode</th>  
+                            <th>Status</th>                      
+                            <th>Assigned To</th>
+                            <th></th>
+                        </tr>
+                    
+                        <tr *ngFor="let complaint of complaintsList;index as i" class="hover-highlight">
+                           
+                            <td>{{complaint.complaintType}}</td>
+                            <td>{{complaint.subject}}</td>
+                            <td>{{complaint.pincode}}</td>
+                            <td>{{complaint.status}}</td>
+                            <td><input type="text" class="form-control text-center" [(ngModel)]="complaint.engineer.userName"
+                                 [disabled]="enableEditIndex != i">
+                           <td>                           
+                            <a class="btn btn-link" [routerLink]="['/assigncomplaint',complaint.complaintId]" >assign</a>
+                        </td>
+                        </tr>                                                  <!--
+                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                        -->
+                    </table>
+                </div>
+                <div class="card-footer">
+               
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
